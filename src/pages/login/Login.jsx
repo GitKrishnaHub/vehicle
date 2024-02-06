@@ -1,7 +1,9 @@
 import React from 'react'
 import { loginphoto } from '../../images/image'
 import './Login.css'
+import { useNavigate } from 'react-router-dom'
 const Login = () => {
+    const Navigation=useNavigate()
     return (
         <section className='login'>
         <img src={loginphoto} alt="background" />
@@ -24,7 +26,10 @@ const Login = () => {
                             <p>Forgot Password ?</p>
                         </div>
                         <div className="l-btn">
-                            <button type="submit" id='sub-btn'>Login</button>
+                            <button type="submit" id='sub-btn' onClick={()=>{
+                                Navigation('/home')
+
+                            }}>Login</button>
                         </div>
                         <div className="l-createacc">
                             <p>Create new Account? <span className='l-signup'>Sign Up</span></p>
