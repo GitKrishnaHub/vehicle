@@ -1,0 +1,85 @@
+.navbar{
+    height: 100%;
+    display: flex;
+}
+.n-container{
+    position: relative;
+    width: 200px;
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    color: white;
+    
+    background-color:#145277;
+}
+.n-logo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    color: red;
+    font-size: 2rem;
+   
+}
+.n-data{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 20px;
+    font-weight: 600;
+     
+}
+.n-home{
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:flex-start;
+    gap: 1rem;
+    padding: 0.5rem;
+    transition: all 0.5s linear;
+}
+.n-profile{
+    width: 100%;
+    display: flex;
+    /* border: 2px solid #fff; */
+    font-size: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+.n-profile:hover{
+    background-color: rgb(173, 221, 230);
+    color: #000;
+}
+.n-home:hover{
+    background-color: rgb(173, 221, 230);
+    color: #000;
+}
+.p-image{
+    width: 30px;
+    height: 30px;
+    /* border: 2px solid #fff; */
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: aqua;
+}
+
+@media screen and (max-width:1024px) and (orientation:portrait) {
+     .n-container{
+        display: none;
+    }
+    
+    .active .n-container{
+        display: flex;
+    }
+}
