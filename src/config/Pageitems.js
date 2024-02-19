@@ -8,7 +8,6 @@ export {
     google,
     logo,
     headlogo,
-    excel,
-    
+    excel,    
 }
 
