@@ -1,17 +1,31 @@
 .header{
     width: 100%;
-
-}
+    height: fit-content;
+ }
 .h-container{
     position: relative;
     width: 100%;
-    /* border: 2px solid #000; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: .5rem;
+    background-color: var(--primary);
+    color: #fff;
 }
-
+.h-logo{
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: red;
+    font-size: 1.5rem;
+    
+}
+.h-menu{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 .h-menu .mobile-icon[name='close']{
     display: none;
     justify-content: center;
@@ -29,8 +43,8 @@
     gap: 1rem;
 }
 .h-image{
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 20px;
     border: 2px solid #000;
     overflow: hidden;

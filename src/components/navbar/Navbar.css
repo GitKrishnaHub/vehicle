@@ -4,76 +4,68 @@
 }
 .n-container{
     position: relative;
-    width: 200px;
-    height: 100vh;
+     height: 100%;
+    overflow-y: scroll;
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-    color: white;
-    
-    background-color:#145277;
+    gap: 1rem;
+    color: #000;
+    margin-top: 1rem;
+ }
+.n-container::-webkit-scrollbar{
+     outline: none;
+    border: none;
+    width: 10px;
 }
-.n-logo{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    color: red;
-    font-size: 2rem;
-   
+.n-container::-webkit-scrollbar-thumb{
+    border-radius: 20px;
+    background-color: #7d7d7d;
+    outline: none;
+    border: none;
 }
 .n-data{
+     display: flex;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    font-size: 20px;
-    font-weight: 600;
-     
 }
 .n-home{
     width: 100%;
     cursor: pointer;
     display: flex;
-    flex-direction: row;
+     text-decoration: none;
+    flex-direction: column;
+    color: #000;
     align-items: center;
-    justify-content:flex-start;
-    gap: 1rem;
-    padding: 0.5rem;
-    transition: all 0.5s linear;
+    gap: 1rem;   
 }
-.n-profile{
+.n-home h4{
+    padding: .5rem;
+    color: #c0c0c0;
+    transition: all .2s ease;
+}
+.n-home h4:hover{
+    color: #7d7d7d;
+}
+.sub-data{
+    padding: 1rem;
+    transition: all 0.5s linear;
     width: 100%;
+    color: #7d7d7d;
+    gap: .5rem;
+    text-decoration: none;
     display: flex;
-    /* border: 2px solid #fff; */
-    font-size: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    gap: 1rem;
-    padding: 0.5rem;
-    cursor: pointer;
-    transition: all 0.5s linear;
+    justify-content: flex-start;
+    font-weight: 600;
+    font-size: larger;
+    border-radius: 30px;  
 }
-.n-profile:hover{
-    background-color: rgb(173, 221, 230);
-    color: #000;
+.sub-data:hover{
+    background-color:var(--primary);
+    color:#fff;
 }
-.n-home:hover{
-    background-color: rgb(173, 221, 230);
-    color: #000;
-}
-.p-image{
-    width: 30px;
-    height: 30px;
-    /* border: 2px solid #fff; */
-    border-radius: 20px;
-    overflow: hidden;
-    background-color: aqua;
-}
-
+ 
 @media screen and (max-width:1024px) and (orientation:portrait) {
      .n-container{
         display: none;
@@ -81,5 +73,7 @@
     
     .active .n-container{
         display: flex;
+        position: fixed;
+        background-color: #fff;
     }
 }
