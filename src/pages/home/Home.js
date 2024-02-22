@@ -3,6 +3,7 @@ import './Home.css'
 import Navbar from '../../components/navbar/Navbar'
 import Header from '../../components/header/Header'
 import Content from '../../content/Content'
+import Dashboard from '../dashboard/Dashboard'
  
 const Home = () => {
   return (
@@ -12,8 +13,10 @@ const Home = () => {
     </header>
     <nav className='ho-nav'>
       <Navbar/>
-       <div className='ho-navpage'>
+       <div className='ho-navpage' >
+         {
           <Content/>
+         }
        </div>
     </nav>
     </section>

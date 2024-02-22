@@ -24,6 +24,8 @@
     border: none;
     padding: 0.8rem;
     border-radius: 25px;
+    border: none;
+    outline: none;
 }
 .o-addbtn input{
     padding: 0.5rem;

@@ -1,9 +1,9 @@
-import { AssignmentInd, CorporateFare, Dashboard, DirectionsBus, FormatListBulleted, Hail,Map, Person, Route} from '@mui/icons-material';
- 
+import { AssignmentInd, CorporateFare, DirectionsBus, FormatListBulleted, Hail,Map, Menu, Person, Route} from '@mui/icons-material';
+import Dashboard   from '../../pages/dashboard/Dashboard';
 
 
 export const  navData=[
-    { lable:'Dashboard', key:'/', icon:<Dashboard/> },
+    { lable:'Dashboard', key:'/home/dashboard', icon:<Menu/> },
     { lable:'User', key:'/user', icon:<Person/>},
     { lable:'Vehicle', key:'/vehicle', icon:<DirectionsBus/> },
     { lable:'Role', key:'/role', icon:<AssignmentInd/> },

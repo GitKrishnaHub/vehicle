@@ -9,10 +9,12 @@ import Feature from '../pages/feature/Feature'
 import Routess from '../pages/Routes/Routess'
 import Stops from '../pages/stops/Stops'
 import Tracking from '../pages/tracking/Tracking'
+import Home from '../pages/home/Home'
+import Login from '../pages/login/Login'
 const Content = () => {
  return(
-  <Routes>
-    <Route path='/' index element={<Dashboard/>}/>
+   <Routes>
+    <Route index path='/home/dashboard/' element={<Dashboard/>}/>
     <Route path='/user' element={<Users/>}/>
     <Route path='/vehicle' element={<Vehicle/>}/>
     <Route path='/role' element={<Role/>}/>
