@@ -2,19 +2,35 @@ import React, { useEffect, useState } from 'react';
 import './Organization.css'
 import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios'
+import Cookies from 'universal-cookie';
 
 const Oraganization = () => {
 const [OrgState,setOrgState]= useState([]);
 
 const fetchDataFromApi = async () => {
   try {
-      const {data} = await axios.get('http://localhost:3000/api/organization/')
-      setOrgState(data?.organizations)
+    const cookies = new Cookies();
+    const token = cookies.get('token');
+    const response = await axios.get('http://localhost:3000/api/organization/', {
+      withCredentials: true, // Include cookies in the request
+      headers: {
+        // Optionally, you can add other headers if needed
+        // 'Authorization': `Bearer ${accessToken}`
+      }
+    });
+
+    if (response.status === 200) {
+      const data = response.data;
+      // Assuming setOrgState is a state setter function
+      setOrgState(data?.organizations);
+    } else {
+      console.error('Failed to fetch data:', response.statusText);
+    }
   } catch (err) {
-      console.log(err);
-      return err;
+    console.error('Error during fetch:', err);
   }
 };
+
 useEffect(()=>{
   fetchDataFromApi();
 },[]);
