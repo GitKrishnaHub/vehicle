@@ -1,9 +1,9 @@
-import { BrowserRouter as Router  } from "react-router-dom";
-import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { green, grey } from "@mui/material/colors";
- 
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import Layout from "./layout/Layout";
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -18,9 +18,9 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-    <Router>
-      <Home/>
-    </Router>
+      <Router>
+        <Layout />
+      </Router>
     </ThemeProvider>
   );
 }

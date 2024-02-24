@@ -1,15 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Login.css'
 import { google,logo } from '../../config/Pageitems';
 // import AppleIcon from '@mui/icons-material/Apple';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDiscord, faLinkedin, faTwitterSquare, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { useNavigate } from 'react-router';
-
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import  Cookies  from 'universal-cookie';
+ 
 const Login = () => {
-  
   const navigate = useNavigate();
-   
+  const [email,setEmail]=useState('');
+  const [password,setPassword]=useState('');
+
+  const userLogin=async(e)=>{
+    e.preventDefault();
+    const response=await fetch('http://localhost:3000/api/auth/login',{
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body:JSON.stringify({
+        email,
+        password,
+      }),
+      credentials: 'include', // Include cookies in the request
+    })
+    console.log(response)
+    // const cookieHeader = response.headers['set-cookie'];
+    // console.log(cookieHeader)
+    // console.log(response.headers)
+    if (response.ok) {
+      // Extract cookies from the responseponse headers
+      const cookies = new Cookies();
+      const token = cookies.get('token'); // Assuming 'token' is the name of the cookie storing the 
+      // console.log('Token:', token);
+      // Redirect or handle successful login
+      // For example, redirect to a dashboard page
+      navigate('/home/dashboard');
+      } else {
+      // Handle login failure
+      // For example, show an error message
+      alert('Login failed')
+      console.error('Login failed');
+      }
+  }
   return (
     <section className='Login'>
       <div className="l-container">
@@ -38,7 +71,7 @@ const Login = () => {
             <h1>Sign In</h1>
             <h4>Sign in to your account</h4>
           </section>
-          <form className="login-form">
+          <form method='POST' className="login-form">
             <div className="l-social">
               <div className="l-google">
                 <img src={google} alt="google" />
@@ -50,16 +83,16 @@ const Login = () => {
               </div> */}
             </div>
             <div className="l-email">
-              <label htmlFor="email">Email address</label>
-              <input type="text" name="email" id="email" required />
+              <label htmlFor="email">Email addresponses</label>
+              <input type="text" name="email" id="email" value={email}  onChange={(e)=>setEmail(e.target.value)} required />
             </div>
             <div className="l-pass">
               <label htmlFor="password">Password</label>
-              <input type="password" name="password" id="password" required />
+              <input type="password" name="password" id="password" value={password} onChange={(e)=>setPassword(e.target.value)} required />
             </div>
             <div className="submit">
               <h4>Forgot password?</h4>
-              <button type="submit" id='Signin' onClick={() => { navigate('/home') }}>Sign In</button>
+              <button type="submit" id='Signin' onClick={userLogin}>Sign In</button>
             </div>
             <div className="l-createAcc">
               <p>Don't have an account? <span>Register here</span></p>

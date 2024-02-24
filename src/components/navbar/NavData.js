@@ -1,7 +1,7 @@
 import {
   AssignmentInd,
   CorporateFare,
-  Dashboard as DashboardIcon,
+  Menu,
   DirectionsBus,
   FormatListBulleted,
   Hail,
@@ -20,7 +20,7 @@ import Tracking from "../../pages/tracking/Tracking";
 import Organization from "../../pages/organization/Organization";
 
 export const navData = [
-  { label: "Dashboard", key: "/", icon: <DashboardIcon /> , component : <Dashboard/>},
+  { label: "Dashboard", key: '/home/dashboard', icon: <Menu/> , component : <Dashboard/>},
   { label: "User", key: "/user", icon: <Person /> , component : <Users/>},
   { label: "Vehicle", key: "/vehicle", icon: <DirectionsBus /> ,component : <Vehicle/>},
   { label: "Role", key: "/role", icon: <AssignmentInd /> ,component : <Role/>},

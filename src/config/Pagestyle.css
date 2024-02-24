@@ -20,4 +20,55 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
- 
+.Add button{
+  padding: 1rem;
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 30px;
+}
+.searchbar{
+  display: flex;
+  width: 20vw;
+  /* gap: 0.5rem; */
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000;
+  padding: 1rem ;
+  border-radius: 25px;
+}
+.searchbar input{
+  width: 100%;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+}
+.Filter button{
+  display: flex;
+  width: 10vw;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem;
+  font-size: 20px;
+  border-radius: 30px;
+  outline: none;
+  /* border: none; */
+ }
+ .Table{
+  border: 1px solid #000;
+ }
+ .Table table{
+  width: 100%;
+  border-collapse: collapse;
+ }
+ .Table table th{
+    background-color: #605BFF;
+    color: #ccc;
+ }
+ .Table table th tbody{
+  width: 100%;
+  
+ }
