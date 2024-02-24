@@ -1,7 +1,8 @@
+
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Vehicle from '../pages/vehicle/Vehicle'
-import Oraganization from '../pages/organization/Oraganization'
+import Oraganization from '../pages/organization/Organization'
 import Users from '../pages/Users/Users'
 import Role from '../pages/role/Role'
 import Feature from '../pages/feature/Feature'
@@ -25,6 +26,5 @@ const Content = () => {
         
  )
 }
- 
 
-export default Content
+export default Content;

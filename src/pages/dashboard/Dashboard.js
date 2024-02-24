@@ -17,7 +17,7 @@ const Dashboard = () => {
     </nav>
     </header>
     </section>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

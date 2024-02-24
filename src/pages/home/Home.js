@@ -1,4 +1,4 @@
-import React from 'react'
+ import React from 'react'
 import './Home.css'
 import Login from '../login/Login' 
 import HomeHeader from '../../components/header/homeheader/HomeHeader'
@@ -8,7 +8,7 @@ import HomeHeader from '../../components/header/homeheader/HomeHeader'
     <HomeHeader/>
      <Login/>
     </section>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

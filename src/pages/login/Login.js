@@ -13,7 +13,7 @@ const Login = () => {
     <section className='Login'>
     
     {
-      showCustomAlert && <AlertPopup message="This is a custom alert message."/> 
+      showCustomAlert && <AlertPopup message="Please enter valid email addess & password"/>
     }
       <div className="l-container">
         <section className="l-frame">

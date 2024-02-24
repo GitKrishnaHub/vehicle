@@ -7,3 +7,4 @@ export const card=[
     {title:'Stops', icon:<Hail style={{fontSize:"40px"}}/>},
      
 ]
+
