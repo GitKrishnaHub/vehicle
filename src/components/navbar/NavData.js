@@ -17,7 +17,7 @@ import Feature from "../../pages/feature/Feature";
 import Routess from "../../pages/Routes/Routess";
 import Stops from "../../pages/stops/Stops";
 import Tracking from "../../pages/tracking/Tracking";
-import Oraganization from "../../pages/organization/Oraganization";
+import Organization from "../../pages/organization/Organization";
 
 export const navData = [
   { label: "Dashboard", key: "/", icon: <DashboardIcon /> , component : <Dashboard/>},
@@ -28,5 +28,5 @@ export const navData = [
   { label: "Routes", key: "/route", icon: <Route /> ,component : <Routess/>},
   { label: "Stops", key: "/stops", icon: <Hail /> ,component : <Stops/>},
   { label: "Tracking", key: "/tracking", icon: <Map /> ,component : <Tracking/>},
-  { label: "Organization", key: "/organization", icon: <CorporateFare /> ,component : <Oraganization/>},
+  { label: "Organization", key: "/organization", icon: <CorporateFare /> ,component : <Organization/>},
 ];
