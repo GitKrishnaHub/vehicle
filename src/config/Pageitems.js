@@ -1,17 +1,9 @@
-import google from '../images/google.svg'
-import logo from '../images/logo.svg'
-import headlogo from '../images/headlogo.svg'
-import excel from '../images/excel.svg'
+
 import './Pagestyle.css'
 import { Add, FilterAlt, Search } from '@mui/icons-material'
 import React from 'react'
 
-export {
-    google,
-    logo,
-    headlogo,
-    excel,
-}
+
 
 export const SearchComponent = () => {
     return (

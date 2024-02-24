@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;800&family=Roboto:wght@100;300;400;900&display=swap');
 
 :root{
-  --primary:#605BFF;
-  --text:#858585;
+  --body:#F2F2F2;
+  --background:#FFFFFF;
   --fontFamily:'poppins','roboto';
   --cards: hsla(220, 78%, 29%, 1)
-
+  --btnText:#fff;
+  --primary:#000;
 }
 
 *{
@@ -15,9 +16,10 @@
 }
 body {
   margin: 0;
-   font-family: 'poppins','roboto';
+   font-family: var(--fontFamily);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--body);
 }
 
 .Add button{

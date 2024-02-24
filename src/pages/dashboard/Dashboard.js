@@ -1,25 +1,21 @@
 import React from 'react'
 import './Dashboard.css'
-import { card } from './Carddata'
+import Navbar from '../../components/navbar/Navbar'
+import Content from '../../content/Content'
+import DashboardHeader from '../../components/header/dashboardheader/DashboardHeader'
 
 const Dashboard = () => {
   return (
-    <section className='dashboard'>
-    <div className="d-container">
-       {
-        card?.map((item,index)=>{
-          return(
-            <div key={index} className='d-card'>
-            <h1>{item.title}</h1>
-            <div className="d-carddata">
-            <p>10000</p>
-            {item.icon}
-            </div>
-            </div>
-          )
-        })
-       }
+    <section className='dashboard-page'>
+    <header className='dashboard-page-nav'>
+    <Navbar/>
+    <nav className='dashboard-page-header'>
+      <DashboardHeader/>
+       <div className='dashboard-page-navpage' >
+          <Content/>
        </div>
+    </nav>
+    </header>
     </section>
   )
 }

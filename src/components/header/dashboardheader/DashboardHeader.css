@@ -1,0 +1,61 @@
+/* Dashboard Header CSS Start */
+.dashboard-header{
+    width: 100%;
+ }
+.dh-container{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--background);
+    color: var(--primary);
+}
+
+.dh-menu{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.dh-menu .mobile-icon[name='close']{
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.dh-menu .mobile-icon[name='menu']{
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.dh-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.dh-image{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 2px solid #000;
+    overflow: hidden;
+    background-color: var(--primary);
+}
+
+/* Dashboard Header CSS End */
+
+@media screen and (max-width:1024px) and (orientation:portrait) {
+    .dh-menu .mobile-icon[name='menu']{
+       display: flex;
+   }
+   .dh-menu .mobile-icon[name='close']{
+       display: none;
+   }
+    .active .mobile-icon[name='close']{
+       display: flex;
+    }
+    .active .mobile-icon[name='menu']{
+       display: none;
+    }
+}

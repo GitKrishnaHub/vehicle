@@ -1,131 +1,73 @@
 .Login {
-    font-family:var(--fontFamily);
- }
-
-.l-container {
-    height: 100vh;
     width: 100%;
+}
+.l-container {
+    overflow: hidden;
     position: relative;
+    padding: 2rem;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    /* border: 2px solid #000; */
 }
-
-.l-left {
+.l-frame{
     position: relative;
     z-index: 100;
     overflow: hidden;
-    color: #ffff;
+    color: var(--btnBackground);
     display: flex;
     flex-direction: column;
+    padding: 5rem;
     flex-wrap: wrap;
 }
-.background {
-    position: absolute;
-    height: 100%;
-    z-index: -1;
+.l-data{
+    display: flex;
+    flex-direction: column;
+    padding: 0 5rem 0 5rem;
+}
+.l-content h1{
     width: 100%;
-    background: var(--primary);
-    transform: skew(-4deg, 0deg) translate(-6%, 0%);
-    transition: 0.5s ease-in-out;
+    font-size: 3rem;
 }
-
-.l-data {
-    position: relative;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
- }
-
-.l-logo {
-    display: flex;
-    align-items: center;
-    margin: 1rem;
-    justify-content: flex-start;
-     
-
-    
+.l-image img{
+    position: absolute;
+    width: 20vw;
+    left: 0;
 }
-.l-log img {
-    height: 50px;
-    width: 50px;
-}
-.base-logo {
-    height: 100%;
-    transform: translate(0,30%);
-    padding: 5rem;
-    position: relative;
-    color: #fff;
-    font-size: 5rem;
-    display: flex;
-    justify-content: center;
-    cursor: default;
-}
-
-.social-media  {
-     position: relative;
-    list-style: none;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    top:-1rem;
-
-    
-}
-.social-media2  {
-    display: none; 
-}
-
-.social-media li {
-    position: relative;
-    border-radius: 20px;
-    object-fit: cover;
-    font-size: 40px;
-    cursor: pointer;
-}
-
-.l-right {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 5rem;
-    justify-content: center;
-    gap: 2rem;
-}
-
+ 
 .l-header {
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
-
-}
-.l-header h1 {
-    margin: 0;
     font-size: 40px;
     font-weight: 800;
-}
-.l-header h4{
-    margin: 0;
-    font-weight: 600;
 }
 .login-form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding:0 5rem 0 5rem;
-    gap: 1.5rem;
+    padding:1rem 10rem 1rem 10rem;
+    gap: 2rem;
+    color: var(--primary);
+    background-color: var(--background);
+    border-radius: 15px;
 }
- 
+.login-form input {
+    width: 100%;
+    background: #F5F5F5;
+    font-size: 18px;
+    border-radius: 15px;
+    padding: 1rem 3rem 1rem 1rem;
+}
 .l-social {
     display: flex;
     justify-content: flex-start;
     gap: 1.5rem;
     align-items: center;
 }
+
 .l-google {
     display: flex;
     cursor: pointer;
@@ -133,9 +75,9 @@
     font-size: 15px;
     color: #858585;
     gap: 1rem;
-     padding: 0.5rem 0 0.5rem 0;
+    padding: 0.5rem 0 0.5rem 0;
 }
-.login-form img {
+.l-google img {
     height: 20px;
     width: 20px;
 }
@@ -148,139 +90,141 @@
     color: #858585;
     gap: 1rem;
 }
-.l-email {
+.l-pass {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
 }
-.l-email label {
-    font-weight: 600;
+.l-visibility{
+    position: absolute;
+    right: 0.5rem;
+    top: 0.6rem;
+    font-size: 20px;
+    cursor: pointer;
 }
-.login-form  
-     input {
-    padding: 0.5rem;
-    background: #F5F5F5;
-    font-size: 18px;
-    outline: none;
-    border: none;
+#eye{
+    font-size: 35px; 
 }
+
+
 .submit {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
-.submit  h4 {
+.submit h4 {
     color: var(--primary);
     font-size: 15px;
     cursor: pointer;
 }
-.submit button{
+
+.submit #Signin {
     padding: 0.5rem;
+    text-transform: none;
     font-size: 20px;
     font-weight: 600;
     color: #fff;
-    background-color:var(--primary);
+    background-color: var(--primary);
     border-radius: 15px;
     border: none;
     cursor: pointer;
 }
+
 .l-createAcc {
     display: flex;
     justify-content: center;
     color: #858585;
 
-   
-}
-.l-createAcc  span {
-    color:var(--primary);
-    cursor: pointer;
-}
-.l-pass {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;    
-}
-.l-pass input {
-    padding: 0.5rem;
-    background: #F5F5F5;
-    font-size: 18px;
-    outline: none;
-    border: none;
-}
-.l-pass label {
-    font-weight: 600;
+
 }
 
-@media screen and (max-width:1024px) and (orientation: portrait){
-    .Login{
-             width: 100vw;
+.l-createAcc span {
+    color: var(--primary);
+    cursor: pointer;
+}
+
+
+@media screen and (max-width:1024px) and (orientation: portrait) {
+    .Login {
+        width: 100vw;
     }
-    .l-container{
+
+    .l-container {
         width: 100%;
         height: 100%;
         position: relative;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        
+
     }
-    .l-left{
+
+    .l-left {
         z-index: 100;
         width: 100%;
         height: 60px;
         position: relative;
-        
+
         display: flex;
         flex-direction: column;
-        
+
     }
-    .background{
+
+    .background {
         transform: none;
     }
-    .l-logo{
+
+    .l-logo {
         position: relative;
         top: -0.5rem;
     }
-    .l-logo img{
+
+    .l-logo img {
         height: 3rem;
         width: 60px;
     }
-    .base-logo{
+
+    .base-logo {
         position: absolute;
         top: -1rem;
         right: 1rem;
-             padding: 0;
+        padding: 0;
         font-size: 1.5rem;
     }
-    .social-media{
-        display:none;
+
+    .social-media {
+        display: none;
     }
-    .social-media2  {
-             position: relative;
+
+    .social-media2 {
+        position: relative;
         list-style: none;
         z-index: 100;
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 2rem;
-        top:-0.5rem;
+        top: -0.5rem;
         cursor: pointer;
-        
+
     }
-    .social-media2 li{
+
+    .social-media2 li {
         position: relative;
         border-radius: 20px;
         object-fit: cover;
         font-size: 25px;
         cursor: pointer;
     }
-    .social-media2 li:hover{
+
+    .social-media2 li:hover {
         color: var(--primary);
     }
-    .l-right{
+
+    .l-right {
         padding: 0;
     }
-    .login-form{
+
+    .login-form {
         padding: 1rem;
     }
-} 
+}

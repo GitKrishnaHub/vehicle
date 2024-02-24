@@ -1,4 +1,5 @@
 import {DirectionsCar, Hail, Person, Route} from '@mui/icons-material'
+
 export const card=[
     {title:'User', icon:<Person style={{fontSize:"40px"}}/>},
     {title:'Vehicle', icon:<DirectionsCar style={{fontSize:"40px"}}/>},

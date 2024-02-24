@@ -1,5 +1,4 @@
 import React from 'react'
-import Dashboard from '../pages/dashboard/Dashboard'
 import { Routes, Route } from 'react-router-dom'
 import Vehicle from '../pages/vehicle/Vehicle'
 import Oraganization from '../pages/organization/Oraganization'
@@ -9,12 +8,11 @@ import Feature from '../pages/feature/Feature'
 import Routess from '../pages/Routes/Routess'
 import Stops from '../pages/stops/Stops'
 import Tracking from '../pages/tracking/Tracking'
-import Home from '../pages/home/Home'
-import Login from '../pages/login/Login'
+import Overview from '../pages/dashboard/dashboarddata/Overview'
 const Content = () => {
  return(
    <Routes>
-    <Route index path='/home/dashboard/' element={<Dashboard/>}/>
+    <Route index path='/dashboard/' element={<Overview/>}/>
     <Route path='/user' element={<Users/>}/>
     <Route path='/vehicle' element={<Vehicle/>}/>
     <Route path='/role' element={<Role/>}/>
