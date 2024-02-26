@@ -7,9 +7,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useTheme } from "@mui/material/styles";
-import React from "react";
+import React, { useState } from "react";
 import "./Organization.css";
-import { IconButton, Menu, MenuItem, Switch } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Menu, MenuItem, Switch } from "@mui/material";
 
 function createData(id, name, domain, city, contact, organizationStatus) {
   return { id, name, domain, city, contact, organizationStatus };
@@ -39,6 +39,8 @@ const getRows = (rows) =>
 const OrganizationTable = ({ orgData, setOrgData }) => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [deleteId, setDeleteId] = useState(null);
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -46,15 +48,26 @@ const OrganizationTable = ({ orgData, setOrgData }) => {
   const handleClose = (action, id) => {
     setAnchorEl(null);
     if (action === "Delete") {
-      const updatedData = orgData.filter((row) => row.id != id);
-      setOrgData(updatedData);
+      setDeleteId(id)
     }
   };
+
+  const handleDeleteConfirm = (id) => {
+    const updatedData = orgData.filter((row) => row.id !== id);
+    setOrgData(updatedData);
+    setDeleteId(null);
+  };
+
+  const handleDeleteCancel = () => {
+    setDeleteId(null);
+  };
+
   const styles = {
     header: { backgroundColor: theme.palette.primary.main, color: "white" },
   };
 
   return (
+    <>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -114,7 +127,25 @@ const OrganizationTable = ({ orgData, setOrgData }) => {
         </TableBody>
       </Table>
     </TableContainer>
-  );
+
+  <Dialog open={deleteId !== null} onClose={handleDeleteCancel}>
+  <DialogTitle>Confirm Delete</DialogTitle>
+  <DialogContent>
+    <DialogContentText>
+      Are you sure you want to delete this row?
+    </DialogContentText>
+  </DialogContent>
+  <DialogActions>
+    <Button onClick={handleDeleteCancel} color="primary">
+      Cancel
+    </Button>
+    <Button onClick={() => handleDeleteConfirm(deleteId)} color="primary" autoFocus>
+      Delete
+    </Button>
+  </DialogActions>
+</Dialog>
+</>
+);
 };
 
 export default OrganizationTable;
