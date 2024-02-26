@@ -20,6 +20,7 @@ const SearchOrganization = () => {
 
   return (
     <div className="o-searchbar">
+      <div>
       <TextField
         id="search-organization"
         label="Search Organization"
@@ -34,6 +35,8 @@ const SearchOrganization = () => {
         onChange={handleSearchChange}
         value={searchQuery}
       />
+      </div>
+      <div>Filter</div>
     </div>
   );
 };

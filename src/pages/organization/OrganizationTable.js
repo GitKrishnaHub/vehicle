@@ -36,17 +36,20 @@ const getRows = (rows) =>
     )
   );
 
-const OrganizationTable = ({ orgData }) => {
+const OrganizationTable = ({ orgData, setOrgData }) => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleClose = (action, id) => {
     setAnchorEl(null);
+    if (action === "Delete") {
+      const updatedData = orgData.filter((row) => row.id != id);
+      setOrgData(updatedData);
+    }
   };
-
   const styles = {
     header: { backgroundColor: theme.palette.primary.main, color: "white" },
   };
@@ -98,8 +101,12 @@ const OrganizationTable = ({ orgData }) => {
                     "aria-labelledby": "action-btn",
                   }}
                 >
-                  <MenuItem onClick={handleClose}>Update</MenuItem>
-                  <MenuItem onClick={handleClose}>Delete</MenuItem>
+                  <MenuItem onClick={() => handleClose("Update", row.id)}>
+                    Update
+                  </MenuItem>
+                  <MenuItem onClick={() => handleClose("Delete", row.id)}>
+                    Delete
+                  </MenuItem>
                 </Menu>
               </TableCell>
             </TableRow>
