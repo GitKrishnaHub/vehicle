@@ -6,6 +6,7 @@ import "./Organization.css";
 const SearchOrganization = () => {
   return (
     <div className="o-searchbar">
+      <div>
       <TextField
         id="search-organization"
         label="Search Organization"
@@ -18,6 +19,8 @@ const SearchOrganization = () => {
           ),
         }}
       />
+      </div>
+      <div>Filter</div>
     </div>
   );
 };

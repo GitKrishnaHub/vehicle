@@ -19,7 +19,7 @@ const Organization = () => {
         "http://localhost:3000/api/organization/",
         {
           // Include cookies in the request
-          withCredentials: true,
+          // withCredentials: true,
           headers: {
             // Optionally, you can add other headers if needed
             // 'Authorization': `Bearer ${accessToken}`
@@ -51,7 +51,7 @@ const Organization = () => {
         <OrgHeader orgData={orgData} />
         <Divider />
         <SearchOrganization orgData={orgData} />
-        <OrganizationTable orgData={orgData} />
+        <OrganizationTable orgData={orgData} setOrgData={setOrgData}/>
       </Paper>
     </div>
   );
