@@ -33,3 +33,8 @@
   vertical-align: super;
 }
 
+.search-filter-wrapper{
+  display: flex;
+  justify-content: space-between
+}
+

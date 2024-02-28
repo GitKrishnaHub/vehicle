@@ -20,7 +20,6 @@ const SearchOrganization = () => {
           }}
         />
       </div>
-      <div>Filter</div>
     </div>
   );
 };
