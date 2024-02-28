@@ -17,7 +17,7 @@ const Navbar = () => {
                         {
                             navData?.map((item, index) => {
                                 return (
-                                    <NavLink to={item.key} key={index} className="sub-data">
+                                    <NavLink to={item.path} key={index} className="sub-data">
                                         {item.icon}
                                         <p>{item.lable}</p>
                                     </NavLink>

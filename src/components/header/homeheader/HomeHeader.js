@@ -1,15 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import './HomeHeader.css'
+import { AddComponent } from '../../../config/Pageitems';
+import { Add } from '@mui/icons-material';
 
 const HomeHeader = () => {
 
     const HomeNav = [
-        { lable: 'Link 1', path: '/' },
-        { lable: 'Link 2', path: '/' },
-        { lable: 'Link 3', path: '/' },
-        { lable: 'Link 4', path: '/' },
-        { lable: 'Link 5', path: '/' },
+        { lable: 'Features', path: '/' },
+        { lable: 'Pricing', path: '/' },
+        { lable: 'Support', path: '/' },
+        { lable: 'Resources', path: '/' },
+        { lable: 'Contact Us', path: '/' },
     ]
 
     return (
@@ -33,9 +35,7 @@ const HomeHeader = () => {
                     <div className="hh-help-btn">
                         <p><Link to={''} className="hh-link">Help</Link></p>
                     </div>
-                    <div className="hh-organization-btn">
-                        <input type="button" value="Create Organization" id='btn-create-organization'/>
-                    </div>
+                     <AddComponent name={'Create Organization'} icon={<Add/>} onclick={''}/>
                 </div>
             </div>
         </section>

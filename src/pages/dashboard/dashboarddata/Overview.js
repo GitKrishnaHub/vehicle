@@ -1,7 +1,7 @@
 import React from 'react'
 import './Overview.css'
 import {card} from './Carddata'
-
+import Map from '../../../components/map/Map'
 const Overview = () => {
   return (
     <section className='overview'>
@@ -19,6 +19,9 @@ const Overview = () => {
           )
         })
        }
+       </div>
+       <div className="o-map">
+        <Map/>
        </div>
     </section>
   )

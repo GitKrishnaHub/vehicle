@@ -19,25 +19,23 @@ const LoginForm = ({setShowCustomAlert}) => {
 
     const userLogin=async(event)=>{
       event.preventDefault();
+      const cookies = new Cookies();
+      const token = cookies.get('token'); 
       const response=await fetch('http://localhost:3000/api/auth/login',{
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json','token':'token'},
         body:JSON.stringify({
           email,
           password,
         }),
         credentials: 'include', 
       })
-      console.log(response)
       if (response.ok) {
-        const cookies = new Cookies();
-        const token = cookies.get('token'); 
         setLoading(true); 
-        navigate('/dashboard/');
+        navigate('/Overview/');
         } else {
           setShowCustomAlert(true);
           setTimeout(()=>setShowCustomAlert(false),3000)
-        console.error('Login failed');
         }
     }
 

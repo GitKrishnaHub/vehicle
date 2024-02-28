@@ -27,6 +27,7 @@ const Organization = () => {
         const data = response.data;
         // Assuming setOrgState is a state setter function
         setOrgData(data?.organizations);
+         
       } else {
         console.error('Failed to fetch data:', response.statusText);
       }

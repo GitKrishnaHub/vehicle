@@ -1,8 +1,13 @@
 import React from 'react'
- 
+import { navData } from '../../navbar/NavData';
 import { NotificationsNone,Menu,Close,Logout } from '@mui/icons-material';
 import './DashboardHeader.css'
+import {useLocation} from 'react-router'
 const DashboardHeader = () => {
+
+  const location = useLocation()
+  const currentpath=location.pathname.substring(1)
+  const currentpage=currentpath.split('/')
   return (
     <section className='dashboard-header '>
       <header className="dh-container">
@@ -16,6 +21,9 @@ const DashboardHeader = () => {
               <Menu className='mobile-icon' name='menu' />
               <Close className='mobile-icon' name='close' />
                 
+        <div className="dh-page">
+          <h1>{currentpage}</h1>
+        </div>
         </div>
         <div className="dh-profile">
         <div className="dh-bell">

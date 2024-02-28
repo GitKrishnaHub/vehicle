@@ -28,6 +28,9 @@
     justify-content: center;
     align-items: center;
 }
+.dh-page{
+    font-size: 1.8rem;
+}
 .dh-profile{
     display: flex;
     justify-content: center;
