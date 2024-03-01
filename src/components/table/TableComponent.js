@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { Box, InputLabel, FormControl, Select, InputAdornment, TextField, Paper, Table, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Menu, MenuItem, TableBody, TableCell, TableContainer, TableHead, TableRow, useTheme } from "@mui/material";
+import { Box, TextFieldLabel, FormControl, Select, TextFieldAdornment, TextField, Paper, Table, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Menu, MenuItem, TableBody, TableCell, TableContainer, TableHead, TableRow, useTheme } from "@mui/material";
 import Pagination from '../../components/pagination/Pagination';
 import axios from 'axios';
-import UseFetch from '../../hooks/UseFetch';
-
+import Cookies from 'universal-cookie';
 const TableComponent = ({ columns, passingData, itemsPerPages, setData }) => {
 
     //Style the table
@@ -61,6 +60,7 @@ const TableComponent = ({ columns, passingData, itemsPerPages, setData }) => {
 
  
     const handleDeleteConfirm =async () => {
+        
         const DeleteId=await axios.delete(`http://localhost:3000/api/user/${selectedUserId}`)
         const updatedData = passingData.filter((row) => row.id !== DeleteId);
         setData(updatedData);
@@ -80,6 +80,7 @@ const TableComponent = ({ columns, passingData, itemsPerPages, setData }) => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const itemData={userId:selectedUserId, newPassword:confirmPassword}
     
     const openChangePassword = (action) => {
         if (action === "password") {
@@ -94,35 +95,33 @@ const TableComponent = ({ columns, passingData, itemsPerPages, setData }) => {
     }
 
 
-
+ 
     const handlePasswordConfirm = async () => {
         if (newPassword !== confirmPassword) {
             setErrorMessage("Passwords don't match");
             return;
         }
         try {
-            const response = await axios.post(`http://localhost:3000/api/user/password/${selectedUserId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ newPassword }),
-                credentials: 'include',
+            const response = await axios.patch(`http://localhost:3000/api/user/password`, {
+              newPassword: newPassword,
+              oldPassword: '1232',
+              userId: selectedUserId
             });
-            console.log(response)
-            if (response.ok) {
-                setSuccessMessage('Password updated successfully');
-                setErrorMessage('');
+            
+      
+            if (response.status === 200) {
+              setSuccessMessage('Password updated successfully');
+              setErrorMessage('');
             } else {
-                const errorData = await response;
-                setSuccessMessage('');
-                setErrorMessage(errorData.message || 'Failed to update password');
+              setSuccessMessage('');
+              setErrorMessage('Failed to update password');
             }
-        } catch (error) {
+          } catch (error) {
             console.error('Error updating password:', error);
             setSuccessMessage('');
             setErrorMessage('An unexpected error occurred');
-        }
+          }
+        
     };
 
     //Update functions
@@ -154,15 +153,24 @@ const TableComponent = ({ columns, passingData, itemsPerPages, setData }) => {
         handleCloseMenu();
       };
 
-      const handleSave = () => {
-        const updatedData = passingData.map(item => {
-          if (item.id === selectedUserId) {
-            return { ...item, name: editedName, email: editedEmail, userName: editedUsername, rolesName: editedRole};
-          }
-          return item;
-        });
-        setData(updatedData);
-        setEditingId(null);
+      const handleSave = async () => {
+         const response = await axios.put(`http://localhost:3000/api/user/`,{
+            userId:selectedUserId,
+            name:editedName,
+            email:editedEmail,
+         })
+        // const updatedData = passingData.map(item => {
+        //   if (item.id === selectedUserId) {
+        //     return { ...item, name: editedName, email: editedEmail, userName: editedUsername, rolesName: editedRole};
+        //   }
+        //   return item;
+        // });
+        if(response.ok){
+             console.log('Updated')
+        }
+        else{
+            console.log('update failed')
+        }
       };
 
     return (
@@ -179,13 +187,13 @@ const TableComponent = ({ columns, passingData, itemsPerPages, setData }) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {currentData?.map((row, index) => (
+                        {currentData?.map((row) => (
                             <TableRow key={row.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-                             {editingId === row.id ? (<input type='text' value={editedName} onChange={(e)=>setEditedName(e.target.value)}/>) : <TableCell align="center">{row.name}</TableCell> }  
-                             {editingId === row.id ? (<input type='text' value={editedEmail} onChange={(e)=>setEditedEmail(e.target.value)}/>) :  <TableCell align="center">{row.email}</TableCell> }  
-                             {editingId === row.id ? (<input type='text' value={editedUsername} onChange={(e)=>setEditedUsername(e.target.value)}/>) :<TableCell align="center">{row.userName}</TableCell> }  
-                             {editingId === row.id ? (<input type='text' value={editedRole} onChange={(e)=>setEditedRole(e.target.value)}/>) :  <TableCell align="center">{row.roles?.name}</TableCell> }  
-                             {editingId === row.id ? (<input type='button' value={'Save'}  onClick={()=>handleSave(row.id)}/>) :     
+                             {editingId === row.id ? (<TextField type='text' value={editedName} onChange={(e)=>setEditedName(e.target.value)}/>) : <TableCell align="center">{row.name}</TableCell> }  
+                             {editingId === row.id ? (<TextField type='text' value={editedEmail} onChange={(e)=>setEditedEmail(e.target.value)}/>) :  <TableCell align="center">{row.email}</TableCell> }  
+                             {editingId === row.id ? (<TextField type='text' value={editedUsername} onChange={(e)=>setEditedUsername(e.target.value)}/>) :<TableCell align="center">{row.userName}</TableCell> }  
+                             {editingId === row.id ? (<TextField type='text' value={editedRole} onChange={(e)=>setEditedRole(e.target.value)}/>) :  <TableCell align="center">{row.roles?.name}</TableCell> }  
+                             {editingId === row.id ? (<TextField type='button' value={'Save'}  onClick={()=>handleSave(row.id)}/>) :     
                                 
                                 <TableCell align="center">
                                     <IconButton
