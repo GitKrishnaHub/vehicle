@@ -18,3 +18,13 @@
     width: 100px;
     cursor: pointer;
 }
+@media screen and (max-width:1024px) and (orientation: portrait) {
+    .pagination{
+        font-size: 12px;
+    }
+    .pagination-btn button{
+        padding: .3rem;
+        width: 80px;
+
+    }
+}

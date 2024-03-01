@@ -4,7 +4,9 @@
   padding: 1rem;
 }
 .o-searchbar {
-  margin: 20px 25px; 
+  margin: 20px 25px;
+  display: flex;
+  justify-content: space-between; 
 }
 
 .org-header {
@@ -29,5 +31,10 @@
   font-size: 12px;
   border-radius: 50px;
   vertical-align: super;
+}
+
+.search-filter-wrapper{
+  display: flex;
+  justify-content: space-between
 }
 

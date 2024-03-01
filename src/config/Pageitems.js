@@ -1,48 +1,88 @@
+import React, { useEffect, useState } from 'react'
 import './Pagestyle.css'
-import { Add, FilterAlt, Search } from '@mui/icons-material'
-import React,{useState} from 'react'
-import axios from 'axios'
+import { Add, Search } from '@mui/icons-material'
+
+import { Box, Button, InputLabel, MenuItem, FormControl, Select, InputAdornment, TextField } from "@mui/material";
 
 
-export const SearchComponent = () => {
-    const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+
+export const SearchData = ({setSearchTerm,searchTerm, passingData,setData}) => {
+
+  const [userData, setUserData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const handleSearch = async () => {
-    try {
-      const response = await axios.get(`http://localhost:3000/api/user/search?q=${searchQuery}`);
-      setSearchResults(response.data);
-      setError(null);
-    } catch (error) {
-      setError('Error fetching data. Please try again.');
-      setSearchResults([]);
+  
+ 
+  const handleSearch =  () => {
+    try{
+      setData(searchTerm);
+    }catch{
+      setError('Not Found');
     }
   };
-    return (
-        <div className="searchbar">
-            <input type="text" value={searchQuery} onChange={handleInputChange} name="search" id="search" placeholder='Search' />
-            <span onClick={handleSearch}><Search /></span>
-            {error && <div>{error}</div>}
-        </div>
-    )
+  
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+
+  return (
+    
+      <div className="searchbar">
+        <TextField
+          id="search"
+          label="Search User"
+          variant="outlined"
+          value={searchTerm}
+          onChange={handleChange}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end" onClick  ={handleSearch} >
+                <Search    style={{cursor:'pointer'}} />
+              </InputAdornment>
+            ),
+          }}
+        />
+        {error && <div>{error}</div>}
+      </div>
+  )
 }
-export const FilterComponent = () => {
-    return (
-        <div className="Filter">
-            <button type='button'><FilterAlt />Filters</button>
-        </div>
-    )
+
+export const FilterData = ({ passingData, filterData, setFilters }) => {
+  const itemsFilter = passingData?.map((org) => org?.roles?.name);
+  const handleFilter = (event) => {
+    let clonedFilters = { ...filterData };
+    clonedFilters.roles = event.target.value;
+    setFilters(clonedFilters);
+  };
+
+  return (
+    <Box id='filter-box'>
+      <FormControl fullWidth  id="dropdown">
+        <InputLabel id="org-name-dropdown">Role</InputLabel>
+        <Select
+          labelId="user-name-dropdown"
+          id="user-dropdown"
+          value={filterData?.roles}
+          label="roles"
+          onChange={handleFilter}
+        >
+          <MenuItem value={''}>All</MenuItem>
+          {
+            itemsFilter?.map((items, index) =>
+            (
+              <MenuItem key={index} value={items}>{items}</MenuItem>
+            ))
+          }
+        </Select>
+      </FormControl>
+    </Box>
+  )
 }
+
 export const AddComponent = (props) => {
-    return (
-        <div className="Add">
-            <button type='button' id='Add-btn' onClick={props.onclick}>{props.icon}{props.name}</button>
-        </div>
-    )
+  return (
+    <Button  variant="contained" id="add-btn" onClick={props.onclick}><Add />{props.name}</Button>
+  )
 }
- 
+
